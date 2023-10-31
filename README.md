@@ -3,16 +3,18 @@
 1. Naklonovanie projektu
 ##
     git clone https://gitlab.prosoft.sk/swp/npop-e2e-tests.git 
-2. Testy sa spúšťajú z default priečinka "nPOP_EVOD", preto je potrebné sa do neho prepnúť 
+2. Je potrebné mať správne nastavené v systémových premenných ANDROID HOME
+
+3. Testy sa spúšťajú z default priečinka "nPOP_EVOD", preto je potrebné sa do neho prepnúť 
 ##
     cd nPOP_EVOD/
-3. Nainštalovanie potrebných balíčkov z Node package manager.   
+4. Nainštalovanie potrebných balíčkov z Node package manager.   
 ##
     npm install
-4. Inštalácia appium pluginu 
+5. Inštalácia appium pluginu 
 ##
     npm install appium -g
-5. Na spustenie testov je potrebné mať pripojené reálne zariadenie(Zebra) s nainštalovanou aplikáciou nPOP alebo emulátor
+6. Na spustenie testov je potrebné mať pripojené reálne zariadenie(Zebra) s nainštalovanou aplikáciou nPOP alebo emulátor
  
 ## Spustenie testov:
 ### 1. Pripojenie reálneho zariadenia(POPky), alebo spustenie emulátora s nainštalovanou aplikáciou nPOP.

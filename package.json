@@ -22,6 +22,10 @@
         "wdio-wait-for": "^3.0.0"
     },
     "scripts": {
-        "wdio": "wdio run wdio.conf.js"
+        "wdio": "wdio run wdio.conf.js",
+        "e2e": "wdio run wdio.conf.js --suite e2e",
+        "allure": "allure generate ./reports/allure/allure-results --clean && allure open ",
+        "allure:history": "mkdir -p allure-report/history ./test/reports/allure-results/history && cp -a allure-report/history ./test/reports/allure-results/",
+        "allure-report": "./node_modules/.bin/allure generate --clean ./test/reports/allure-results && allure open"
     }
 }

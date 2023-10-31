@@ -1,4 +1,6 @@
 import { datetime } from "./android/pageobjects/Utils";
+const fs = require('fs-extra')
+
 
 export const config = {
     //
@@ -7,10 +9,22 @@ export const config = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
-    port: 4724,
+    port: 4723,
+    services: [
+        ['appium', {
+        args:{
+            adress: 'localhost',
+            port:4723
+        },
+        logPath: './'
+    }],
+    ],
+    appium: {
+        command: 'appium',
+        args: {},
+    },
     path: "/wd/hub",
     host: "localhost",
-    
     //
     // ==================
     // Specify Test Files
@@ -28,9 +42,24 @@ export const config = {
     // will be called from there.
     //
     specs: [
-        // ToDo: define location for spec files here
-        "android/specs/E2E/ISDPOP-1_HS_OtvorenieAUkoncenie.js",
+        "android/specs/E2E/ISDPOP-11_HS_ZavadaNaVozni.js",
+        "android/specs/E2E/ISDPOP-12_VymazanieZavadyNaVozni.js",
     ],
+    suites: {
+        e2e: [
+            "android/specs/E2E/ISDPOP-1_HS_OtvorenieAUkoncenie.js",
+            "android/specs/E2E/ISDPOP-2_HS_OtvorenieAZrusenie.js", 
+            "android/specs/E2E/ISDPOP-3_PS_OtvorenieAUkoncenie.js",
+            "android/specs/E2E/ISDPOP-4_PS_OtvorenieAZrusenie.js",
+            "android/specs/E2E/ISDPOP-6_ZaradenieVozidla.js",
+            "android/specs/E2E/ISDPOP-7_ZaradSpevPersonal.js",
+            "android/specs/E2E/ISDPOP-8_OdklonTrasy.js",
+            //"android/specs/E2E/ISDPOP-11_HS_ZavadaNaVozni.js",
+            //"android/specs/E2E/ISDPOP-12_VymazanieZavadyNaVozni.js", 
+            "android/specs/E2E/ISDPOP-14_ObratVlaku.js", 
+        ],
+   }
+    ,
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -51,7 +80,7 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -90,7 +119,7 @@ export const config = {
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 1,
+    bail: 0,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
